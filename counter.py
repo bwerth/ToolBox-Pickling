@@ -22,18 +22,31 @@ def update_counter(file_name, reset=False):
 	1
 	>>> update_counter('blah.txt')
 	2
-	>>> update_counter('blah2.txt',True)
-	1
 	>>> update_counter('blah.txt')
 	3
+	>>> update_counter('blah2.txt',True)
+	1
 	>>> update_counter('blah2.txt')
 	2
 	"""
-	pass
-
-if __name__ == '__main__':
-	if len(sys.argv) < 2:
-		import doctest
-		doctest.testmod()
+	if reset or not exists(file_name):
+		fout = open(file_name,'w')
+		count = 0
 	else:
-		print "new value is " + str(update_counter(sys.argv[1]))
+		fout = open(file_name,'r+')
+		count = load(fout)
+		print count
+	count = count + 1
+	fout.seek(0,0)
+	dump(count,fout)
+	return count
+
+#if __name__ == '__main__':
+#	if len(sys.argv) < 2:
+#		import doctest
+#		doctest.testmod()
+#	else:
+#		print "new value is " + str(update_counter(sys.argv[1]))
+update_counter('blah3.txt',True)
+update_counter('blah3.txt')
+update_counter('blah3.txt')

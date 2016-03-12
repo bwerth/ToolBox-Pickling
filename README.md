@@ -1,4 +1,2 @@
 # ToolBox-Pickling
-Pickling Project Toolbox starter code
-
-Full instructions at https://sites.google.com/site/sd16spring/home/project-toolbox/pickling
+This program updates a text file used as a counter by incrementing the integer in the file for each call of update_counter. 
